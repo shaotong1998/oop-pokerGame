@@ -44,8 +44,44 @@ public class Control {
                 util.printNow(index);
             }
             //2.得到两个索引
-            int c1 = util.getCoordinate();
-            int c2 = util.getCoordinate();
+            int c1 = 0;
+            int c2 = 0;
+
+            while(c1 == c2){
+                c1 = util.getCoordinate();
+                c2 = util.getCoordinate();
+                if(c1==c2 && c1!=-1){
+                    System.out.println("输入的坐标不能一样！");
+                }
+                if(c1>this.num||c1<0){
+                    if(c1 == -1){
+                        System.out.println("输入不符合规则！请重新输入");
+                        c1 = c2;
+                    }
+                    else {
+                        c1++;
+                        System.out.println("已输入的" + c1 + "不符合规则，请输入1到" + this.num + "范围内的索引！");
+                        c1 = c2;
+                    }
+                }
+                if(c2>this.num||c2<0){
+                    if(c2 == -1){
+                        System.out.println("输入不符合规则！请重新输入");
+                        c1 = c2;
+                    }
+                    else {
+                        c2++;
+                        System.out.println("已输入的" + c2 + "不符合规则，请输入1到" + this.num + "范围内的索引！");
+                        c1 = c2;
+                    }
+                }
+                if(c1>0 && c1<this.num && c2>0 && c2<this.num) {
+                    if (index.get(c1) != '$' || index.get(c2) != '$') {
+                        System.out.println("输入位置包含已经翻过的内容，请重新输入!");
+                        c1 = c2;
+                    }
+                }
+            }
             //3.核心逻辑：更新当前的画布
             // 3.1不管怎样先翻过来
             index.set(c1,gameList.get(c1));
@@ -59,7 +95,8 @@ public class Control {
                 index.set(c2,'$');
                 gate = 0;
             }
-            if(gameList.get((c1))==gameList.get(c2)){
+            if(gameList.get(c1)==gameList.get(c2)){
+
                 System.out.println("恭喜！请继续输入\n");
                 gate = 1;
             }

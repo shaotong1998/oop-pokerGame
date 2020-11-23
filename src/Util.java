@@ -53,17 +53,18 @@ public class Util {
         System.out.println("输入索引:");
 
         Scanner scan = new Scanner(System.in);
-        if(scan.hasNext()){
+        if(scan.hasNextInt()){
             c1 = scan.nextInt();
         }
         return c1 - 1;
     }
+
     public void shuaPing(){
 //        LocalTime time = LocalTime.now();
 //        int second = time.getSecond();
         try{
-            System.out.println("内容不符，3秒后执行刷屏操作！");
-            Thread.currentThread().sleep(3000);
+            System.out.println("内容不符，1秒后执行刷屏操作！");
+            Thread.currentThread().sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
